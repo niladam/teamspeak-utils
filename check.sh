@@ -51,7 +51,7 @@ if [ -e "$TSFOLDER/$PIDFILE" ]; then
         echo "$(date) Found pid.... $PID, checking it" >> $LOGFILE
 else
         echo "$(date) Teamspeak server is not running, starting it.." >> $LOGFILE
-        su - ${USER} -c "${TSFOLDER}/${SNAME} status"
+        su - ${USER} -c "${TSFOLDER}/${SNAME} start"
         exit 0;
 fi
 
@@ -63,7 +63,7 @@ if [ ${PID} -gt 0 ]; then
         else
                 echo "$(date) Teamspeak server probably crashed, because the PID ${PID} is not running.." >> $LOGFILE
                 echo "$(date) Starting teamspeak server" >> $LOGFILE
-                su - ${USER} -c "${TSFOLDER}/${SNAME} status"
+                su - ${USER} -c "${TSFOLDER}/${SNAME} start"
                 exit 0;
         fi
 else
